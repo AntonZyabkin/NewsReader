@@ -16,13 +16,16 @@
 		E8A5FE5729F2B83A00D01A0D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE5629F2B83A00D01A0D /* RxCocoa */; };
 		E8A5FE5929F2B83A00D01A0D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE5829F2B83A00D01A0D /* RxRelay */; };
 		E8A5FE5B29F2B83A00D01A0D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE5A29F2B83A00D01A0D /* RxSwift */; };
-		E8A5FE6129F2B8BC00D01A0D /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6029F2B8BC00D01A0D /* NewsService.swift */; };
-		E8A5FE6629F2B9AE00D01A0D /* TopStoryHeadLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6529F2B9AE00D01A0D /* TopStoryHeadLine.swift */; };
-		E8A5FE6929F2BB7C00D01A0D /* HeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6829F2BB7C00D01A0D /* HeadlinesViewController.swift */; };
-		E8A5FE6B29F2BBA400D01A0D /* HeadlinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6A29F2BBA400D01A0D /* HeadlinesViewModel.swift */; };
-		E8A5FE6D29F2C00400D01A0D /* HeadlinesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A5FE6C29F2C00400D01A0D /* HeadlinesViewController.xib */; };
-		E8A5FE7329F2C1D800D01A0D /* HeadlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE7129F2C1D800D01A0D /* HeadlineCell.swift */; };
-		E8A5FE7429F2C1D800D01A0D /* HeadlineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A5FE7229F2C1D800D01A0D /* HeadlineCell.xib */; };
+		E8A5FE6129F2B8BC00D01A0D /* AddsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6029F2B8BC00D01A0D /* AddsService.swift */; };
+		E8A5FE6629F2B9AE00D01A0D /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6529F2B9AE00D01A0D /* Ad.swift */; };
+		E8A5FE6929F2BB7C00D01A0D /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6829F2BB7C00D01A0D /* AddListViewController.swift */; };
+		E8A5FE6B29F2BBA400D01A0D /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE6A29F2BBA400D01A0D /* AddListViewModel.swift */; };
+		E8A5FE6D29F2C00400D01A0D /* AddListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A5FE6C29F2C00400D01A0D /* AddListViewController.xib */; };
+		E8A5FE7329F2C1D800D01A0D /* AdsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE7129F2C1D800D01A0D /* AdsListCell.swift */; };
+		E8A5FE7429F2C1D800D01A0D /* AdsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A5FE7229F2C1D800D01A0D /* AdsListCell.xib */; };
+		E8A5FE7729F2CA7F00D01A0D /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE7629F2CA7F00D01A0D /* Differentiator */; };
+		E8A5FE7929F2CA7F00D01A0D /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE7829F2CA7F00D01A0D /* RxDataSources */; };
+		E8A5FE7C29F536A600D01A0D /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE7B29F536A600D01A0D /* Fakery */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,13 +37,13 @@
 		E8A5FE4A29F2B75E00D01A0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8A5FE4D29F2B75E00D01A0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8A5FE4F29F2B75E00D01A0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8A5FE6029F2B8BC00D01A0D /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
-		E8A5FE6529F2B9AE00D01A0D /* TopStoryHeadLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoryHeadLine.swift; sourceTree = "<group>"; };
-		E8A5FE6829F2BB7C00D01A0D /* HeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesViewController.swift; sourceTree = "<group>"; };
-		E8A5FE6A29F2BBA400D01A0D /* HeadlinesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesViewModel.swift; sourceTree = "<group>"; };
-		E8A5FE6C29F2C00400D01A0D /* HeadlinesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadlinesViewController.xib; sourceTree = "<group>"; };
-		E8A5FE7129F2C1D800D01A0D /* HeadlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineCell.swift; sourceTree = "<group>"; };
-		E8A5FE7229F2C1D800D01A0D /* HeadlineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadlineCell.xib; sourceTree = "<group>"; };
+		E8A5FE6029F2B8BC00D01A0D /* AddsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddsService.swift; sourceTree = "<group>"; };
+		E8A5FE6529F2B9AE00D01A0D /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
+		E8A5FE6829F2BB7C00D01A0D /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
+		E8A5FE6A29F2BBA400D01A0D /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
+		E8A5FE6C29F2C00400D01A0D /* AddListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListViewController.xib; sourceTree = "<group>"; };
+		E8A5FE7129F2C1D800D01A0D /* AdsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsListCell.swift; sourceTree = "<group>"; };
+		E8A5FE7229F2C1D800D01A0D /* AdsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +51,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A5FE7729F2CA7F00D01A0D /* Differentiator in Frameworks */,
 				E8A5FE5B29F2B83A00D01A0D /* RxSwift in Frameworks */,
+				E8A5FE7C29F536A600D01A0D /* Fakery in Frameworks */,
 				E8A5FE5929F2B83A00D01A0D /* RxRelay in Frameworks */,
+				E8A5FE7929F2CA7F00D01A0D /* RxDataSources in Frameworks */,
 				E8A5FE5729F2B83A00D01A0D /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,7 +99,7 @@
 		E8A5FE5C29F2B87E00D01A0D /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E8A5FE5F29F2B8B200D01A0D /* News */,
+				E8A5FE5F29F2B8B200D01A0D /* AddsList */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -116,12 +122,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		E8A5FE5F29F2B8B200D01A0D /* News */ = {
+		E8A5FE5F29F2B8B200D01A0D /* AddsList */ = {
 			isa = PBXGroup;
 			children = (
-				E8A5FE6029F2B8BC00D01A0D /* NewsService.swift */,
+				E8A5FE6029F2B8BC00D01A0D /* AddsService.swift */,
 			);
-			path = News;
+			path = AddsList;
 			sourceTree = "<group>";
 		};
 		E8A5FE6229F2B8D200D01A0D /* Helpers */ = {
@@ -141,7 +147,7 @@
 		E8A5FE6429F2B98A00D01A0D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				E8A5FE6529F2B9AE00D01A0D /* TopStoryHeadLine.swift */,
+				E8A5FE6529F2B9AE00D01A0D /* Ad.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -150,9 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				E8A5FE6E29F2C11F00D01A0D /* Veiws */,
-				E8A5FE6C29F2C00400D01A0D /* HeadlinesViewController.xib */,
-				E8A5FE6829F2BB7C00D01A0D /* HeadlinesViewController.swift */,
-				E8A5FE6A29F2BBA400D01A0D /* HeadlinesViewModel.swift */,
+				E8A5FE6C29F2C00400D01A0D /* AddListViewController.xib */,
+				E8A5FE6829F2BB7C00D01A0D /* AddListViewController.swift */,
+				E8A5FE6A29F2BBA400D01A0D /* AddListViewModel.swift */,
 			);
 			path = HeadlinesViewController;
 			sourceTree = "<group>";
@@ -160,8 +166,8 @@
 		E8A5FE6E29F2C11F00D01A0D /* Veiws */ = {
 			isa = PBXGroup;
 			children = (
-				E8A5FE7129F2C1D800D01A0D /* HeadlineCell.swift */,
-				E8A5FE7229F2C1D800D01A0D /* HeadlineCell.xib */,
+				E8A5FE7129F2C1D800D01A0D /* AdsListCell.swift */,
+				E8A5FE7229F2C1D800D01A0D /* AdsListCell.xib */,
 			);
 			path = Veiws;
 			sourceTree = "<group>";
@@ -186,6 +192,9 @@
 				E8A5FE5629F2B83A00D01A0D /* RxCocoa */,
 				E8A5FE5829F2B83A00D01A0D /* RxRelay */,
 				E8A5FE5A29F2B83A00D01A0D /* RxSwift */,
+				E8A5FE7629F2CA7F00D01A0D /* Differentiator */,
+				E8A5FE7829F2CA7F00D01A0D /* RxDataSources */,
+				E8A5FE7B29F536A600D01A0D /* Fakery */,
 			);
 			productName = NewsReader;
 			productReference = E8A5FE3E29F2B75B00D01A0D /* NewsReader.app */;
@@ -217,6 +226,8 @@
 			mainGroup = E8A5FE3529F2B75B00D01A0D;
 			packageReferences = (
 				E8A5FE5529F2B83A00D01A0D /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E8A5FE7529F2CA7F00D01A0D /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				E8A5FE7A29F536A600D01A0D /* XCRemoteSwiftPackageReference "Fakery" */,
 			);
 			productRefGroup = E8A5FE3F29F2B75B00D01A0D /* Products */;
 			projectDirPath = "";
@@ -232,8 +243,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8A5FE6D29F2C00400D01A0D /* HeadlinesViewController.xib in Resources */,
-				E8A5FE7429F2C1D800D01A0D /* HeadlineCell.xib in Resources */,
+				E8A5FE6D29F2C00400D01A0D /* AddListViewController.xib in Resources */,
+				E8A5FE7429F2C1D800D01A0D /* AdsListCell.xib in Resources */,
 				E8A5FE4E29F2B75E00D01A0D /* LaunchScreen.storyboard in Resources */,
 				E8A5FE4B29F2B75E00D01A0D /* Assets.xcassets in Resources */,
 				E8A5FE4929F2B75B00D01A0D /* Main.storyboard in Resources */,
@@ -249,12 +260,12 @@
 			files = (
 				E8A5FE4629F2B75B00D01A0D /* ViewController.swift in Sources */,
 				E8A5FE4229F2B75B00D01A0D /* AppDelegate.swift in Sources */,
-				E8A5FE6929F2BB7C00D01A0D /* HeadlinesViewController.swift in Sources */,
-				E8A5FE6129F2B8BC00D01A0D /* NewsService.swift in Sources */,
-				E8A5FE6629F2B9AE00D01A0D /* TopStoryHeadLine.swift in Sources */,
-				E8A5FE6B29F2BBA400D01A0D /* HeadlinesViewModel.swift in Sources */,
+				E8A5FE6929F2BB7C00D01A0D /* AddListViewController.swift in Sources */,
+				E8A5FE6129F2B8BC00D01A0D /* AddsService.swift in Sources */,
+				E8A5FE6629F2B9AE00D01A0D /* Ad.swift in Sources */,
+				E8A5FE6B29F2BBA400D01A0D /* AddListViewModel.swift in Sources */,
 				E8A5FE4429F2B75B00D01A0D /* SceneDelegate.swift in Sources */,
-				E8A5FE7329F2C1D800D01A0D /* HeadlineCell.swift in Sources */,
+				E8A5FE7329F2C1D800D01A0D /* AdsListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +491,22 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		E8A5FE7529F2CA7F00D01A0D /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E8A5FE7A29F536A600D01A0D /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vadymmarkov/Fakery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -497,6 +524,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E8A5FE5529F2B83A00D01A0D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		E8A5FE7629F2CA7F00D01A0D /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8A5FE7529F2CA7F00D01A0D /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		E8A5FE7829F2CA7F00D01A0D /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8A5FE7529F2CA7F00D01A0D /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		E8A5FE7B29F536A600D01A0D /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8A5FE7A29F536A600D01A0D /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

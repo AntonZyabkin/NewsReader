@@ -3,12 +3,12 @@ import RxSwift
 
 
 protocol AddsServiceType {
-    func getTopHeadLines() -> Observable<[Ad]>
+    func getadList(page: Int, limit: Int) -> Single<[Ad]>
 }
 
 
 final class AddsService: AddsServiceType {
-    func getTopHeadLines() -> Observable<[Ad]> {
+    func getadList(page: Int, limit: Int) -> Single<[Ad]> {
         
         let request = URLRequest(url: URL(string: "https://api.evetto.app/v1/ads")!)
         
@@ -25,5 +25,6 @@ final class AddsService: AddsServiceType {
                 try! JSONDecoder().decode(Response.self, from: data)
             }
             .map(\.data)
+            .asSingle()
     }
 }

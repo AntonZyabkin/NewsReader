@@ -15,10 +15,18 @@ final class AddListViewController: UIViewController {
     let viewModel: ViewModel
     private let disposeBag = DisposeBag()
     
-    private lazy var dataSourse = RxTableViewSectionedAnimatedDataSource<AddsSection> { (ds, tv, ip, item) in
-        let cell = tv.dequeueReusableCell(withIdentifier: HEADLINE_CELL) as! AdsListCell
-        cell.configureCell(with: item)
-        return cell
+    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<AddsSection> { ds, tv, ip, item in
+        
+        switch item {
+        case .activityIndicator:
+            let cell = tv.dequeueReusableCell(withIdentifier: ActivityIndicatorCell.id) as! ActivityIndicatorCell
+            cell.startAnimating()
+            return cell
+        case .ad(let ad):
+            let cell = tv.dequeueReusableCell(withIdentifier: HEADLINE_CELL) as! AdsListCell
+            cell.configureCell(with: ad)
+            return cell
+        }
     }
             
     
@@ -46,21 +54,33 @@ private extension AddListViewController {
     func confifureTableViews() {
         let nib = UINib(nibName: "AdsListCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: HEADLINE_CELL)
+        tableView.register(ActivityIndicatorCell.self , forCellReuseIdentifier: ActivityIndicatorCell.id)
         
-        
-        tableView.rx.itemSelected
+        tableView.rx
+            .itemSelected
             .subscribe { [unowned self] ip in
                 tableView.deselectRow(at: ip, animated: true)
             }
             .disposed(by: disposeBag)
 
-
+        tableView.rx
+            .contentOffset
+            .map(\.y)
+            .filter { [unowned self] y in
+                let heihgt = tableView.frame.size.height
+                let distanceFormBotton = tableView.contentSize.height - y
+                return distanceFormBotton < heihgt
+            }
+            .throttle(.seconds(3), latest: true, scheduler: MainScheduler.instance)
+            .map{ _ in }
+            .bind(to: viewModel.nextPageLoadingTrigger)
+            .disposed(by: disposeBag)
 
 
         viewModel
             .addList
             .drive(
-                tableView.rx.items(dataSource: dataSourse)
+                tableView.rx.items(dataSource: dataSource)
             )
             .disposed(by: disposeBag)
     }

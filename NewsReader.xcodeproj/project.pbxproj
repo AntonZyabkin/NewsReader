@@ -26,6 +26,7 @@
 		E8A5FE7729F2CA7F00D01A0D /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE7629F2CA7F00D01A0D /* Differentiator */; };
 		E8A5FE7929F2CA7F00D01A0D /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE7829F2CA7F00D01A0D /* RxDataSources */; };
 		E8A5FE7C29F536A600D01A0D /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = E8A5FE7B29F536A600D01A0D /* Fakery */; };
+		E8A5FE7F29F54D2D00D01A0D /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE7E29F54D2D00D01A0D /* ActivityIndicatorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		E8A5FE6C29F2C00400D01A0D /* AddListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListViewController.xib; sourceTree = "<group>"; };
 		E8A5FE7129F2C1D800D01A0D /* AdsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsListCell.swift; sourceTree = "<group>"; };
 		E8A5FE7229F2C1D800D01A0D /* AdsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsListCell.xib; sourceTree = "<group>"; };
+		E8A5FE7E29F54D2D00D01A0D /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,16 +84,17 @@
 		E8A5FE4029F2B75B00D01A0D /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
+				E8A5FE4129F2B75B00D01A0D /* AppDelegate.swift */,
+				E8A5FE4329F2B75B00D01A0D /* SceneDelegate.swift */,
+				E8A5FE4529F2B75B00D01A0D /* ViewController.swift */,
+				E8A5FE4F29F2B75E00D01A0D /* Info.plist */,
 				E8A5FE6429F2B98A00D01A0D /* Entities */,
 				E8A5FE6329F2B8DA00D01A0D /* Extensions */,
 				E8A5FE6229F2B8D200D01A0D /* Helpers */,
 				E8A5FE5E29F2B88C00D01A0D /* Resources */,
 				E8A5FE5D29F2B88300D01A0D /* Scenes */,
 				E8A5FE5C29F2B87E00D01A0D /* Service */,
-				E8A5FE4129F2B75B00D01A0D /* AppDelegate.swift */,
-				E8A5FE4329F2B75B00D01A0D /* SceneDelegate.swift */,
-				E8A5FE4529F2B75B00D01A0D /* ViewController.swift */,
-				E8A5FE4F29F2B75E00D01A0D /* Info.plist */,
+				E8A5FE7D29F54D0900D01A0D /* Views */,
 			);
 			path = NewsReader;
 			sourceTree = "<group>";
@@ -170,6 +173,14 @@
 				E8A5FE7229F2C1D800D01A0D /* AdsListCell.xib */,
 			);
 			path = Veiws;
+			sourceTree = "<group>";
+		};
+		E8A5FE7D29F54D0900D01A0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8A5FE7E29F54D2D00D01A0D /* ActivityIndicatorCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A5FE4629F2B75B00D01A0D /* ViewController.swift in Sources */,
+				E8A5FE7F29F54D2D00D01A0D /* ActivityIndicatorCell.swift in Sources */,
 				E8A5FE4229F2B75B00D01A0D /* AppDelegate.swift in Sources */,
 				E8A5FE6929F2BB7C00D01A0D /* AddListViewController.swift in Sources */,
 				E8A5FE6129F2B8BC00D01A0D /* AddsService.swift in Sources */,

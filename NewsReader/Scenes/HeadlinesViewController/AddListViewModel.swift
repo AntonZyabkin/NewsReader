@@ -22,7 +22,6 @@ extension AddsSection: AnimatableSectionModelType {
 
 final class AddListViewModel {
     
-    
     enum AdListItem: IdentifiableType, Equatable {
         case activityIndicator
         case ad(Ad)
@@ -39,22 +38,39 @@ final class AddListViewModel {
     }
     
     let addList: Driver<[AddsSection]>
-    let nextPageLoadingTrigger = PublishRelay <Void>()
-    
+    let nextPageTrigger = PublishRelay <Void>()
+    let reloadPageTrigger = PublishRelay <Void>()
+
     private let service: AddsServiceType
     
     init(service: AddsServiceType) {
         self.service = service
-       
-        var page = 1
         
-        addList = nextPageLoadingTrigger
+        addList = AddListViewModel.createAdsListLoader(
+            service: service,
+            nextPageTrigger: nextPageTrigger.asObservable(),
+            reloadTrigger: reloadPageTrigger.asObservable()
+        )
+    }
+    
+    
+    static func createAdsListLoader(
+        service: AddsServiceType,
+        nextPageTrigger: Observable<Void>,
+        reloadTrigger: Observable<Void>
+    ) -> Driver<[AddsSection]> {
+        
+        var page = 0
+        
+        return Observable
+            .merge(
+                nextPageTrigger.do(onNext: { page += 1 }),
+                reloadTrigger).do(onNext: { page = 1 })
+                    
             .flatMap{ () -> Single<[Ad]> in
                 service.getadList(page: page, limit: 20)
             }
-            .do(onNext: { _ in
-                page += 1
-            })
+            .startWith([]) //observable [Ad]
             .map { ads -> [AddsSection] in
                 return [
                     AddsSection(
@@ -63,7 +79,16 @@ final class AddListViewModel {
                 ]
             }
             .asDriver(onErrorJustReturn: [])
-            .startWith([AddsSection(identity: UUID().uuidString, items: [.activityIndicator])])
+        
+        //оператор позволяет не перезаписывать старые элемента новыми, а суммировать их
+            .scan([], accumulator: { old, new in
+                let data: [AddsSection]
+                if page == 1 {
+                    data = new
+                } else {
+                    data = old.dropLast() + new
+                }
+                return data + [AddsSection(identity: UUID().uuidString, items: [.activityIndicator])]
+            })
     }
-    
 }

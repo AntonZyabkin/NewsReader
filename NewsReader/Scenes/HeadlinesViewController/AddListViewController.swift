@@ -15,8 +15,16 @@ final class AddListViewController: UIViewController {
     let viewModel: ViewModel
     private let disposeBag = DisposeBag()
     
-    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<AddsSection> { ds, tv, ip, item in
+    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<AddsSection>(
         
+        animationConfiguration:
+            AnimationConfiguration(
+                insertAnimation: .fade,
+                reloadAnimation: .fade,
+                deleteAnimation: .fade
+            ),
+        
+        configureCell: { ds, tv, ip, item in
         switch item {
         case .activityIndicator:
             let cell = tv.dequeueReusableCell(withIdentifier: ActivityIndicatorCell.id) as! ActivityIndicatorCell
@@ -27,7 +35,7 @@ final class AddListViewController: UIViewController {
             cell.configureCell(with: ad)
             return cell
         }
-    }
+    })
             
     
     init(viewModel: ViewModel) {
@@ -56,6 +64,15 @@ private extension AddListViewController {
         tableView.register(nib, forCellReuseIdentifier: HEADLINE_CELL)
         tableView.register(ActivityIndicatorCell.self , forCellReuseIdentifier: ActivityIndicatorCell.id)
         
+        
+        let refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl
+            .rx
+            .controlEvent(.valueChanged)
+            .bind(to: viewModel.reloadPageTrigger)
+            .disposed(by: disposeBag)
+        
         tableView.rx
             .itemSelected
             .subscribe { [unowned self] ip in
@@ -71,14 +88,17 @@ private extension AddListViewController {
                 let distanceFormBotton = tableView.contentSize.height - y
                 return distanceFormBotton < heihgt
             }
-            .throttle(.seconds(3), latest: true, scheduler: MainScheduler.instance)
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .map{ _ in }
-            .bind(to: viewModel.nextPageLoadingTrigger)
+            .bind(to: viewModel.nextPageTrigger)
             .disposed(by: disposeBag)
 
 
         viewModel
             .addList
+            .do(onNext: { _ in
+                refreshControl.endRefreshing()
+            })
             .drive(
                 tableView.rx.items(dataSource: dataSource)
             )

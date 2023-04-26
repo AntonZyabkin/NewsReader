@@ -52,8 +52,8 @@ final class AdsListViewModel {
         self.routeTrigger = routeTrigger
     }
     
-    func navigateToAd(with id: UUID) {
-        routeTrigger(.details(id))
+    func navigateToAd(with item: AdsListItemViewModel) {
+        routeTrigger(.details(item.id, item.title, ad: item.ad))
     }
     
     static func createAdsLoader(
@@ -63,12 +63,9 @@ final class AdsListViewModel {
     ) -> Driver<[AdsSection]> {
         var page = 0
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("dd MMMM y, HH:mm")
+        let dateFormatter = DateFormatter.datAndTime
         
-        let numberFormatter = NumberFormatter()
-        numberFormatter.minimumFractionDigits = 0
-        numberFormatter.maximumFractionDigits = 2
+        let numberFormatter = NumberFormatter.priceNymberFormatter
         
         return Observable
             .merge(
@@ -87,7 +84,7 @@ final class AdsListViewModel {
                             AdListItem.ad(AdsListItemViewModel(
                                 ad: ad,
                                 formatDate: dateFormatter.string,
-                                formatPrice: numberFormatter.string
+                                priceFormatter: numberFormatter
                             ))
                         }
                     )

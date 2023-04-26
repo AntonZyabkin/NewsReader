@@ -7,27 +7,29 @@
 
 import Foundation
 import SwiftUI
-import Combine
 import RxSwift
 
 
 final class AdDetailsViewModel: ObservableObject {
     
-    @Published var didLoadData = false
+    @Published var didLoadData = true
     @Published var imageURLs: [URL] = []
     @Published var title = ""
     @Published var location: String?
     @Published var price = ""
     @Published var category = ""
+    @Published var date = ""
     @Published var numberOfViews = ""
     @Published var descriptionText: String?
     @Published var sellerName = ""
     @Published var contacts: [Contact] = []
     
-        private var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
+    private var numberFormatter = NumberFormatter.priceNymberFormatter
+    private var dateFormatter = DateFormatter.datAndTime
+
     
-    
-    init(adDetails: Single<Ad>) {
+    init(adDetails: Observable<Ad>) {
         adDetails
             .asObservable()
             .startWith(.placeholder(currency: .TRY))
@@ -51,9 +53,17 @@ final class AdDetailsViewModel: ObservableObject {
         title = ad.title
         descriptionText = ad.description
         location = ad.location?.area ?? ""
-        price = ad.price?.amount.description ?? ""
+        
+        if let incomePrice = ad.price {
+            numberFormatter.currencyCode = incomePrice.currency.rawValue
+            numberFormatter.currencySymbol = incomePrice.currency.currencySymbol
+            self.price = numberFormatter.string(for: incomePrice.amount) ?? "\(incomePrice.amount)"
+        } else {
+            self.price = "цена не указана"
+        }
         category = ad.category?.title ?? ""
-        didLoadData = ad.isPlaceholder != true
+        date =  dateFormatter.string(from: ad.createdAt)
+//        didLoadData = ad.isPlaceholder != true
     }
     
     static var placeholder: AdDetailsViewModel {

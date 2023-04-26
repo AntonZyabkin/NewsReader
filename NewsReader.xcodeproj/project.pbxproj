@@ -21,6 +21,9 @@
 		E8587B0E29F7B92C007C1419 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8587B0D29F7B92C007C1419 /* Currency.swift */; };
 		E8587B1029F7B97B007C1419 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8587B0F29F7B97B007C1419 /* Contact.swift */; };
 		E8587B1229F7B9BE007C1419 /* AdRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8587B1129F7B9BE007C1419 /* AdRecord.swift */; };
+		E8587B1529F912E4007C1419 /* NumberFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8587B1429F912E4007C1419 /* NumberFormater.swift */; };
+		E8587B1729F920CA007C1419 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8587B1629F920CA007C1419 /* DateFormatter.swift */; };
+		E8587B1A29F92CC4007C1419 /* PrimamyActionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8587B1929F92CC4007C1419 /* PrimamyActionStyle.swift */; };
 		E8A5FE4229F2B75B00D01A0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE4129F2B75B00D01A0D /* AppDelegate.swift */; };
 		E8A5FE4429F2B75B00D01A0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A5FE4329F2B75B00D01A0D /* SceneDelegate.swift */; };
 		E8A5FE4B29F2B75E00D01A0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8A5FE4A29F2B75E00D01A0D /* Assets.xcassets */; };
@@ -52,6 +55,9 @@
 		E8587B0D29F7B92C007C1419 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		E8587B0F29F7B97B007C1419 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E8587B1129F7B9BE007C1419 /* AdRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdRecord.swift; sourceTree = "<group>"; };
+		E8587B1429F912E4007C1419 /* NumberFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormater.swift; sourceTree = "<group>"; };
+		E8587B1629F920CA007C1419 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		E8587B1929F92CC4007C1419 /* PrimamyActionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimamyActionStyle.swift; sourceTree = "<group>"; };
 		E8A5FE3E29F2B75B00D01A0D /* NewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A5FE4129F2B75B00D01A0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8A5FE4329F2B75B00D01A0D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,23 @@
 			path = DetainViewController;
 			sourceTree = "<group>";
 		};
+		E8587B1329F912D4007C1419 /* FOundation */ = {
+			isa = PBXGroup;
+			children = (
+				E8587B1429F912E4007C1419 /* NumberFormater.swift */,
+				E8587B1629F920CA007C1419 /* DateFormatter.swift */,
+			);
+			path = FOundation;
+			sourceTree = "<group>";
+		};
+		E8587B1829F92CA8007C1419 /* SwiftUI View modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E8587B1929F92CC4007C1419 /* PrimamyActionStyle.swift */,
+			);
+			path = "SwiftUI View modifiers";
+			sourceTree = "<group>";
+		};
 		E8A5FE3529F2B75B00D01A0D = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +176,7 @@
 		E8A5FE5D29F2B88300D01A0D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E8587B0729F7ABB4007C1419 /* AdsCoordinator.swift */,
 				E8587AFB29F7A8EC007C1419 /* DetainViewController */,
 				E8A5FE6729F2BB6000D01A0D /* Ad List */,
 			);
@@ -186,6 +210,7 @@
 		E8A5FE6329F2B8DA00D01A0D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E8587B1329F912D4007C1419 /* FOundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -204,11 +229,10 @@
 		E8A5FE6729F2BB6000D01A0D /* Ad List */ = {
 			isa = PBXGroup;
 			children = (
-				E8587B0729F7ABB4007C1419 /* AdsCoordinator.swift */,
 				E8A5FE6E29F2C11F00D01A0D /* Veiws */,
-				E8A5FE6C29F2C00400D01A0D /* AdsListViewController.xib */,
 				E8A5FE6829F2BB7C00D01A0D /* AdsListViewController.swift */,
 				E8A5FE6A29F2BBA400D01A0D /* AdsListViewModel.swift */,
+				E8A5FE6C29F2C00400D01A0D /* AdsListViewController.xib */,
 			);
 			path = "Ad List";
 			sourceTree = "<group>";
@@ -226,6 +250,7 @@
 		E8A5FE7D29F54D0900D01A0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8587B1829F92CA8007C1419 /* SwiftUI View modifiers */,
 				E8A5FE7E29F54D2D00D01A0D /* ActivityIndicatorCell.swift */,
 			);
 			path = Views;
@@ -326,16 +351,19 @@
 				E8A5FE7F29F54D2D00D01A0D /* ActivityIndicatorCell.swift in Sources */,
 				E8A5FE4229F2B75B00D01A0D /* AppDelegate.swift in Sources */,
 				E8587AFE29F7A911007C1419 /* AdDetailsViewController.swift in Sources */,
+				E8587B1729F920CA007C1419 /* DateFormatter.swift in Sources */,
 				E8A5FE6929F2BB7C00D01A0D /* AdsListViewController.swift in Sources */,
 				E8A5FE6129F2B8BC00D01A0D /* AdsService.swift in Sources */,
 				E8A5FE6629F2B9AE00D01A0D /* Ad.swift in Sources */,
 				E8587AF229F681A4007C1419 /* DependencyContainer.swift in Sources */,
 				E8A5FE6B29F2BBA400D01A0D /* AdsListViewModel.swift in Sources */,
 				E8587B0A29F7B03B007C1419 /* AdDetailsView.swift in Sources */,
+				E8587B1A29F92CC4007C1419 /* PrimamyActionStyle.swift in Sources */,
 				E8587B0C29F7B052007C1419 /* AdDetailsViewModel.swift in Sources */,
 				E8A5FE4429F2B75B00D01A0D /* SceneDelegate.swift in Sources */,
 				E8587B0629F7AA4B007C1419 /* MainCoordinator.swift in Sources */,
 				E8587B0E29F7B92C007C1419 /* Currency.swift in Sources */,
+				E8587B1529F912E4007C1419 /* NumberFormater.swift in Sources */,
 				E8587B1229F7B9BE007C1419 /* AdRecord.swift in Sources */,
 				E8587AF429F6C961007C1419 /* AdsListItemViewModel.swift in Sources */,
 				E8A5FE7329F2C1D800D01A0D /* AdsListCell.swift in Sources */,

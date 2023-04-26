@@ -71,7 +71,7 @@ private extension AdsListViewController {
         flowLayout.minimumLineSpacing = Constants.itemsPadding
         flowLayout.minimumInteritemSpacing = Constants.itemsPadding
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
-        
+        collectionView.backgroundColor = .systemGray2
         collectionView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
@@ -112,7 +112,7 @@ private extension AdsListViewController {
                 guard case .ad(let ad) = item else {
                     return
                 }
-                self.viewModel.navigateToAd(with: ad.id)
+                self.viewModel.navigateToAd(with: ad)
             })
             .disposed(by: disposeBag)
         
@@ -142,11 +142,8 @@ extension AdsListViewController: UICollectionViewDelegateFlowLayout {
         case .ad:
             return CGSize(
                 width: (collectionView.bounds.width - Constants.sideInset * 2 - Constants.itemsPadding) / 2,
-                height: 400
+                height: 350
             )
-            
         }
-        
     }
-    
 }

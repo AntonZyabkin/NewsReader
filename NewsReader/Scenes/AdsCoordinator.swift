@@ -6,7 +6,7 @@ typealias AdsRouteTrigger = (AdsRoute) -> Void
 
 enum AdsRoute: Route {
     case list
-    case details(UUID)
+    case details(UUID, String, ad: Ad? = nil)
 }
 
 final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
@@ -39,15 +39,17 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
             viewController.title = "Evetto"
             return .push(viewController)
             
-        case .details(let adId):
-            let adDetails = service.getAdDetails(adId)
+        case .details(let adId, let title, let ad):
+            let adDetails = service
+                .getAdDetails(adId)
+                .asObservable()
+                .startWith(ad ?? Ad.placeholder(currency: .TRY))
             let viewModel = AdDetailsViewModel(adDetails: adDetails)
             let view = AdDetailsView(viewModel: viewModel)
             let viewController = AdDetailsViewController(rootView: view)
+            viewController.title = title
             return .push(viewController)
             
         }
-        
     }
-    
 }

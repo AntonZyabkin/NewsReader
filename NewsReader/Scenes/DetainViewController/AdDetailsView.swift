@@ -10,39 +10,37 @@ struct AdDetailsView: View {
             content
                 .redacted(reason: viewModel.didLoadData ? [] : .placeholder)
         }
-        .navigationTitle(viewModel.title)
     }
     
     private var content: some View {
-        Group {
+        VStack {
             images
-            
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Text(viewModel.title)
-                        .font(.title2)
-                    
-                    if let location = viewModel.location {
-                        Text(location)
-                            .foregroundColor(Color.secondary)
-                    }
-                }
-                
-                Spacer()
-                
-                Text(viewModel.price)
-                    .foregroundColor(Color.white)
-                    .padding(6)
-                    .background(Color.blue)
-                    .clipShape(Capsule())
+            titleAnsPrice
+            Divider()
+            catecoryAndDate
+            if let text = viewModel.descriptionText {
+                descriptionText(text)
             }
-            .padding()
+            Button("Связаться", action: {})
+                .buttonStyle(.primaryAction)
+                .padding(.horizontal)
         }
+    }
+    
+    private var imagePlaceHolder: some View {
+        Image(systemName: "photo")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .foregroundColor(Color.secondary)
+            .font(Font.title.weight(.light))
+            .padding(20)
+            .unredacted()
     }
     
     private var images: some View {
         TabView {
-            if viewModel.didLoadData {
+            if viewModel.didLoadData,
+               !viewModel.imageURLs.isEmpty {
                 ForEach(viewModel.imageURLs, id: \.self) { url in
                     LazyImage(
                         url: url,
@@ -55,28 +53,63 @@ struct AdDetailsView: View {
                             } else if let image = state.image {
                                 image
                             } else {
-                                ProgressView()
-                                    .progressViewStyle(.circular)
+                                imagePlaceHolder
+                                    .overlay {
+                                    }
                             }
                         }
                     )
                 }
             } else {
-                Image(systemName: "photo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(Color.secondary)
-                    .font(Font.title.weight(.light))
-                    .padding(20)
-                    .unredacted()
+                imagePlaceHolder
             }
         }
         .tabViewStyle(.page)
-        .frame(height: 200)
+        .frame(height: 250)
         .frame(maxWidth: .infinity)
-        .onAppear{
-            print(viewModel.imageURLs)
+    }
+    
+    
+    private var titleAnsPrice: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading) {
+                Text(viewModel.title)
+                    .font(.title2)
+                
+                if let location = viewModel.location {
+                    Text(location)
+                        .foregroundColor(Color.secondary)
+                }
+            }
+            
+            Spacer()
+            
+            Text(viewModel.price)
+                .foregroundColor(Color.white)
+                .padding(6)
+                .background(Color.blue)
+                .clipShape(Capsule())
         }
+        .padding()
+    }
+    
+    private var catecoryAndDate: some View {
+        HStack() {
+            Text(viewModel.category)
+                .foregroundColor(.accentColor)
+                .font(.subheadline)
+            
+            Spacer()
+            Text(viewModel.date)
+                .foregroundColor(.secondary)
+                .font(.footnote)
+        }
+        .padding()
+    }
+    private func descriptionText(_ text: String) -> some View {
+        Text(text)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
     }
     
 }

@@ -20,12 +20,14 @@ struct AdsListItemViewModel: Hashable, IdentifiableType {
     let price: String
     let date: String
     let imageURL: URL?
+    let ad: Ad
     
     init(
         ad: Ad,
         formatDate: (Date) -> String,
-        formatPrice: (Double) -> String?
+        priceFormatter: NumberFormatter
     ) {
+        self.ad = ad
         id = ad.id
         title = ad.title
         imageURL = ad.previewImageURL
@@ -42,10 +44,13 @@ struct AdsListItemViewModel: Hashable, IdentifiableType {
         
         self.date = formatDate(ad.createdAt)
         
-        if let price = ad.price {
-            self.price = (formatPrice(price.amount) ?? "\(price.amount)") + " " + price.currency.rawValue
+        
+        if let incomePrice = ad.price {
+            priceFormatter.currencyCode = incomePrice.currency.rawValue
+            priceFormatter.currencySymbol = incomePrice.currency.currencySymbol
+            self.price = priceFormatter.string(for: incomePrice.amount) ?? "\(incomePrice.amount)"
         } else {
-            price = "Цена не указана"
+            self.price = "цена не указана"
         }
     }
 }

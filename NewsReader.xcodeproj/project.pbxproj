@@ -102,14 +102,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E8587AFB29F7A8EC007C1419 /* DetainViewController */ = {
+		E8587AFB29F7A8EC007C1419 /* Ad Details */ = {
 			isa = PBXGroup;
 			children = (
 				E8587B0929F7B03B007C1419 /* AdDetailsView.swift */,
 				E8587AFC29F7A911007C1419 /* AdDetailsViewController.swift */,
 				E8587B0B29F7B052007C1419 /* AdDetailsViewModel.swift */,
 			);
-			path = DetainViewController;
+			path = "Ad Details";
 			sourceTree = "<group>";
 		};
 		E8587B1329F912D4007C1419 /* FOundation */ = {
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				E8587B0729F7ABB4007C1419 /* AdsCoordinator.swift */,
-				E8587AFB29F7A8EC007C1419 /* DetainViewController */,
+				E8587AFB29F7A8EC007C1419 /* Ad Details */,
 				E8A5FE6729F2BB6000D01A0D /* Ad List */,
 			);
 			path = Scenes;

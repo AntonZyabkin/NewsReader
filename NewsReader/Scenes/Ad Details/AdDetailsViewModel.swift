@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import RxSwift
 
-
 final class AdDetailsViewModel: ObservableObject {
     
     @Published var didLoadData = false
@@ -28,9 +27,13 @@ final class AdDetailsViewModel: ObservableObject {
     private var disposeBag = DisposeBag()
     private var numberFormatter = NumberFormatter.priceNymberFormatter
     private var dateFormatter = DateFormatter.datAndTime
+    private let routeTrigger: RouteTrigger<AdsRoute>
+    
 
     
-    init(adDetails: Observable<Ad>) {
+    init(adDetails: Observable<Ad>,
+         routeTrigger: RouteTrigger<AdsRoute>) {
+        self.routeTrigger = routeTrigger
         adDetails
             .asObservable()
             .startWith(.placeholder(currency: .TRY))
@@ -69,7 +72,12 @@ final class AdDetailsViewModel: ObservableObject {
         didLoadData = true
     }
     
+    func contactSeller(_ contact: Contact) {
+        routeTrigger.trigger(.contact(contact))
+    }
+    
     static var placeholder: AdDetailsViewModel {
-        AdDetailsViewModel(adDetails: .just(.placeholder(currency: .TRY)))
+        AdDetailsViewModel(adDetails: .just(.placeholder(currency: .TRY)),
+                           routeTrigger: .empty)
     }
 }

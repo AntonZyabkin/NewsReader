@@ -3,12 +3,10 @@ import SwiftUI
 import XCoordinator
 import RxSwift
 
-
-typealias AdsRouteTrigger = (AdsRoute) -> Void
-
 enum AdsRoute: Route {
     case list
     case details(UUID, String, ad: Ad? = nil)
+    case contact(Contact)
 }
 
 final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
@@ -33,9 +31,7 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
         case .list:
             let viewModel = AdsListViewModel(
                 service: service,
-                routeTrigger: { [unowned self] route in
-                    self.trigger(route)
-                }
+                routeTrigger: .init(unownedRouter: unownedRouter)
             )
             let viewController = AdsListViewController(viewModel: viewModel)
             viewController.title = "Evetto"
@@ -53,12 +49,22 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
             }
             
             
-            let viewModel = AdDetailsViewModel(adDetails: adDetails)
+            let viewModel = AdDetailsViewModel(adDetails: adDetails, routeTrigger: .init(unownedRouter: unownedRouter))
             let view = AdDetailsView(viewModel: viewModel)
             let viewController = AdDetailsViewController(rootView: view)
             viewController.title = title
             return .push(viewController)
             
+            
+        case .contact(let contact):
+            guard let url = URL(string: contact.link) else {
+                return .none()
+            }
+            return Transition(presentables: [], animationInUse: nil) { _, _, completion in
+                UIApplication.shared.open(url) { _ in
+                    completion?()
+                }
+            }
         }
     }
 }

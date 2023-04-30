@@ -12,7 +12,8 @@ import RxSwift
 
 final class AdDetailsViewModel: ObservableObject {
     
-    @Published var didLoadData = true
+    @Published var didLoadData = false
+    @Published var sharedURL: URL = URL(string: "https://google.com/")!
     @Published var imageURLs: [URL] = []
     @Published var title = ""
     @Published var location: String?
@@ -49,6 +50,7 @@ final class AdDetailsViewModel: ObservableObject {
     
     
     private func update(from ad: Ad) {
+        sharedURL = ad.adsURL
         imageURLs = (ad.attachments?.map(\.link) ?? [])
         title = ad.title
         descriptionText = ad.description
@@ -63,7 +65,8 @@ final class AdDetailsViewModel: ObservableObject {
         }
         category = ad.category?.title ?? ""
         date =  dateFormatter.string(from: ad.createdAt)
-//        didLoadData = ad.isPlaceholder != true
+        contacts = ad.contacts ?? []
+        didLoadData = true
     }
     
     static var placeholder: AdDetailsViewModel {

@@ -4,13 +4,41 @@ import NukeUI
 struct AdDetailsView: View {
     
     @ObservedObject var viewModel: AdDetailsViewModel
+    @State var presentContactsList = false
     
     var body: some View {
-        ScrollView {
-            content
-                .redacted(reason: viewModel.didLoadData ? [] : .placeholder)
+        ZStack {
+            ScrollView {
+                content
+                    .navigationTitle("Ad")
+                    .toolbar {
+                        ToolbarItemGroup {
+                            
+                            ShareLink(item: viewModel.sharedURL) {
+                                Image(systemName: "square.and.arrow.up")
+
+                            }
+                        }
+                    }
+                    .redacted(reason: viewModel.didLoadData ? [] : .placeholder)
+                    .allowsHitTesting(viewModel.didLoadData)
+            }
+            if presentContactsList {
+                SellerContactsView(contacts: viewModel.contacts) { contact in
+                    presentContactsList.toggle()
+                    print(contact)
+                } closeCallback: {
+                    presentContactsList.toggle()
+                }
+                .animation(.easeOut, value: UUID())
+                .transition(.asymmetric(
+                    insertion: .move(edge: .bottom),
+                    removal: .move(edge: .top)
+                ))
+            }
         }
     }
+    
     
     private var content: some View {
         VStack {
@@ -21,7 +49,9 @@ struct AdDetailsView: View {
             if let text = viewModel.descriptionText {
                 descriptionText(text)
             }
-            Button("Связаться", action: {})
+            Button("Связаться") {
+                presentContactsList.toggle()
+            }
                 .buttonStyle(.primaryAction)
                 .padding(.horizontal)
         }
@@ -116,8 +146,10 @@ struct AdDetailsView: View {
 
 struct AdDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdDetailsView(
-            viewModel: .placeholder
-        )
+        NavigationView {
+            AdDetailsView(
+                viewModel: .placeholder
+            )
+        }
     }
 }

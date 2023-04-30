@@ -1,6 +1,8 @@
 import UIKit
 import SwiftUI
 import XCoordinator
+import RxSwift
+
 
 typealias AdsRouteTrigger = (AdsRoute) -> Void
 
@@ -40,10 +42,17 @@ final class AdsCoordinator: NavigationCoordinator<AdsRoute> {
             return .push(viewController)
             
         case .details(let adId, let title, let ad):
-            let adDetails = service
-                .getAdDetails(adId)
-                .asObservable()
-                .startWith(ad ?? Ad.placeholder(currency: .TRY))
+            
+            let getAdDetailsObservable = service.getAdDetails(adId).asObservable()
+            let adDetails: Observable<Ad>
+            if let ad {
+                adDetails = getAdDetailsObservable
+                    .startWith(ad)
+            } else {
+                adDetails = getAdDetailsObservable
+            }
+            
+            
             let viewModel = AdDetailsViewModel(adDetails: adDetails)
             let view = AdDetailsView(viewModel: viewModel)
             let viewController = AdDetailsViewController(rootView: view)

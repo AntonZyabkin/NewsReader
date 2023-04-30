@@ -8,6 +8,10 @@
 import Foundation
 
 public struct AdResponse: Decodable, Identifiable, Hashable {
+    
+    var adsURL: URL {
+        URL(string: "https://api.evetto.app.v1/ads/" + id.uuidString)!
+    }
 
     private(set) var isPlaceholder: Bool? = false
 
